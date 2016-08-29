@@ -5,7 +5,7 @@ angular.module('starter.ProductCtrl',[])
   var imageReferences = [];
 	var references = [];
    
-	$scope.hasProducts = false;
+	$scope.hasProducts = true;
 	$scope.showGallery=false;
 
 console.log($stateParams.shopId);
@@ -13,6 +13,7 @@ console.log($stateParams.shopId);
 	$timeout(function() {
     references = ActorReferences.getReferences($stateParams.shopId).then(function(data){
     	console.log( "product ctrl" );
+      console.log($stateParams.shopId);
     	
 			$scope.references = data;
     		console.log(  $scope.references);

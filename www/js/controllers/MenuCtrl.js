@@ -6,7 +6,7 @@ angular.module('starter.MenuCtrl', [])
 console.log("menu");
 	$scope.tasks = [
     { title: 'Perfil' , url : '#/app/profile'},
-    { title: 'Georeferencia' , url : '#/app/map'},
+    { title: 'Locales cercanos' , url : '#/app/map'},
     { title: 'Categorías' , url : '#/app/category'},
     { title: 'Salir', url : '#/app/login'}
   ];

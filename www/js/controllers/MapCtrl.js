@@ -5,14 +5,16 @@ angular.module('starter.MapCtrl', [])
 
      // google.maps.event.addDomListener(window, 'load', initialize);
 
-      var geoData = LocalAppStorage.getGeoPosition();
+     
+      
+      function initialize() {
+
+        var geoData = LocalAppStorage.getGeoPosition();
 
         $scope.allNearShops = [];
         $scope.nearShops = ActorReferences.getNearShops(geoData.long,geoData.lat,100000).then(function(nearShops){
           $scope.nearShops1 =  nearShops;
         });
-      
-      function initialize() {
 
         //console.log("dio click");
 

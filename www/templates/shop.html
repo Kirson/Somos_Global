@@ -3,7 +3,7 @@
 
             <div ng-show="!{{hasProducts}}">
                 <ion-content class="has-header has-tabs-top padding">
-                    <h3 class="padding">No existen productos registrados para este local</h3>
+                    <h3 class="padding">No existen promociones registradas para este local</h3>
                 </ion-content>
             </div>
             <div class="content has-header">
@@ -12,18 +12,27 @@
                     <div class="row" ng-repeat="imgs in references"> 
                         <div class="column" >
                             <div ng-if="imgs.idCg.idCg==82">
-                            <div class="card" >
-                                <div class="item item-text-wrap" >
-         
-                                    <div class="item item-body">
-                                        
-                                            <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{imgs.val1Ar}}">
-                                        
+                                <div class="card" >
+                                    <div class="item item-text-wrap" >
+             
+                                        <div class="item item-body">
+                                            
+                                                <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{imgs.val1Ar}}">
+                                                
+                                        </div>
+                                         <div class="social-buttons positive">
+                                            <button class="button button-light col col-20" ng-click="shareViaFb('Mira este lugar que me gustó: {{item.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                               <i class="icon ion-social-facebook"></i>
+                                            </button> 
+                                            <button class="button button-light col col-20" ng-click="shareViaTwitter('Mira este lugar que me gustó: {{item.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                               <i class="icon ion-social-twitter"></i>
+                                            </button> 
+                                            <button class="button button-light col col-20" ng-click="shareAnywhere('Mira este lugar que me gustó: {{item.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com') ">
+                                               <i class="icon ion-forward"></i>
+                                            </button> 
+                                        </div>
                                     </div>
-
                                 </div>
-                            
-                            </div>
                             </div>
                         </div>
                     </div>
