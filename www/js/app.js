@@ -7,7 +7,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
                             'starter.UserServices','UserControllers','SocialServices',
                             'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl',
-                            'starter.CategoryServices','starter.ProductServices',
+                            'starter.CategoryServices','starter.ProductServices','starter.ActorServices',
                             'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
                             'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
 

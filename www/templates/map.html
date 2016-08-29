@@ -1,9 +1,42 @@
-<ion-view title="Geolocalizaci&oacute;n">
+<ion-view title="Geolocalizaci&oacute;n: Locales cercanos">
     <ion-content id="map-and-location">
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyByXigf_FxYyqNv3LZLCiUyBKYWOGZiRgw"></script>
-        <div class="content">
-            <div id="maps" data-tap-disabled="true"></div>
+        <!--
+        <div class="content has-header padding" ng-controller="MapCtrl">
+            <button class="button button-positive col col-20" ng-click="initialize();">
+                <i class="icon ion-search"></i>
+            </button> 
         </div>
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+        -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyByXigf_FxYyqNv3LZLCiUyBKYWOGZiRgw"></script>
+        <div id="map" class="padding" data-tap-disabled="true"></div>
+        
+        <div class="content has-header" >
+            <div class="row"  ng-repeat="shop in nearShops1">
+                <div class="card" >
+                    <div class="item item-text-wrap" >
+                        <div class="item item-body">
+                            <h2>{{shop.idAct.razonSocialAct}}</h2>
+                            <a href="#/app/shop/{{shop.idAct.idAct}}">
+                                <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{shop.idAct.logoAct}}" >
+                            </a>
+                            <p>{{shop.idAct.sloganAct}}</p>
+                            <p>{{shop.idAct.servicioAct}}</p>
+                            <div class="social-buttons positive">
+                                <button class="button button-light col col-20" ng-click="shareViaFb('Mira este lugar que me gustó: {{shop.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                    <i class="icon ion-social-facebook"></i>
+                                </button> 
+                                <button class="button button-light col col-20" ng-click="shareViaTwitter('Mira este lugar que me gustó: {{shop.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                    <i class="icon ion-social-twitter"></i>
+                                </button> 
+                                <button class="button button-light col col-20" ng-click="shareAnywhere('Mira este lugar que me gustó: {{shop.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com') ">
+                                    <i class="icon ion-forward"></i>
+                                </button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </ion-content><!--map and location section-->
 </ion-view>

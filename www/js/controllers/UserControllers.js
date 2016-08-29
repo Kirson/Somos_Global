@@ -339,6 +339,8 @@ $scope.gotoTerms = function(){
       User.newUser(usuario).then(function(response){
         $scope.response =  response;
           console.log( "result " + $scope.response);
+          console.log( "result " + $scope.response.user);
+          console.log( "result " + $scope.response.data);
           // console.log(  $scope.categories );
           $rootScope.user = {
               nombre : '',
