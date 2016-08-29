@@ -6,13 +6,14 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
                             'starter.UserServices','UserControllers','SocialServices',
-                            'starter.MenuCtrl',
+                            'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl',
                             'starter.CategoryServices','starter.ProductServices',
                             'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
                             'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
 
 .run(function($ionicPlatform, $rootScope) {
     $rootScope.restUrl = "http://186.5.121.17:9090/SomosGlobal/webresources/";
+
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -57,6 +58,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                         document.getElementById('fab-activity').classList.toggle('on');
                     }, 200);
                 }
+            }
+        }
+    })
+
+
+    .state('app.map', {
+        url: '/map',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/map.html',
+                controller: 'MapCtrl'
+            },
+            'fabContent': {
+                template: ''
+                
             }
         }
     })

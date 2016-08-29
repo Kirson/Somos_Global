@@ -51,6 +51,7 @@ p {
     width: 220px;
 }
 
+
 .menu.menu-left * {
     font-weight: bold;
 }
@@ -98,3 +99,20 @@ Slider
   height: 100vh;
   width: auto;
 }
+
+/**
+Map
+**/
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+#maps {
+    width: 90%;
+    height: 90%;
+  }
+  
+.scroll {
+    height: 100%;
+  }

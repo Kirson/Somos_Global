@@ -174,7 +174,7 @@ angular.module('UserControllers', [])
 	};
 })
 
-.controller('LoginCtrl', function($scope,$rootScope,$stateParams, $location, 
+.controller('LoginCtrl', function($scope,$rootScope,$stateParams, $location, FacebookService,
                                    $ionicLoading, User, $ionicPopup, $timeout, ionicMaterialInk) {
  console.log("login ctrl ");
 
@@ -230,6 +230,18 @@ $scope.user = $rootScope.user;
       User.getUserByUser($scope.user.userName, $scope.user.password ).then(function(response){
         console.log( "result " + response);        
         if (response){
+
+          /*
+          var uName =  response.nombre + ' ' +response.apellido;
+
+            FacebookService.setUser({
+              userID: '',
+              name: uName,
+              email: response.correo,
+              picture : ""
+            });
+          */
+
           $location.path('/app/profile');
           // console.log( "login true" );        
         }else{

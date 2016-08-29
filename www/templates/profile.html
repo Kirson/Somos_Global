@@ -1,7 +1,8 @@
 <ion-view view-title="Perfil">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="content">
-                <ion-list>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyByXigf_FxYyqNv3LZLCiUyBKYWOGZiRgw"></script>
+        <div class="content has-header" ng-controler="ProfileCtrl">
+            <ion-list>
                     <div class="item item-avatar">
                         
                         <img src="{{user.picture}}"/>
@@ -18,17 +19,17 @@
                         <p>Longitud {{long}}</p>
                         
                     </div>
-                </ion-list>
-                </div>
-        <div class="tabs tabs-dark tabs-icon-top static">
-            <a ui-sref="app.activity" class="tab-item">
-                <i class="icon ion-arrow-graph-up-right"></i> Actividad Reciente
-            </a>
-            <a ui-sref="app.gallery" class="tab-item">
-                <i class="icon ion-images"></i> Galer&iacute;a
-            </a>
+            </ion-list>
+            <div class="tabs tabs-dark tabs-icon-top static">
+                <a ui-sref="app.map" class="tab-item">
+                    <i class="icon ion-arrow-graph-up-right"></i> Georeferencia
+                </a>
+                <a ui-sref="app.gallery" class="tab-item">
+                    <i class="icon ion-images"></i> Galer&iacute;a
+                </a>
+            </div>
         </div>
-        <div class="content">
+        <div class="content" ng-controler="ProfileCtrl">
             <div id="map" data-tap-disabled="true"></div>
         </div>
     </ion-content>

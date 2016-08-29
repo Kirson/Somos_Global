@@ -1,51 +1,52 @@
-<ion-view view-title="{{category.name}}">
+<ion-view view-title="Somos Global: Locales">
     <ion-content ng-class="{expanded:isExpanded}">
             
             <div ng-show="!chunkedData.length">
                 <ion-content class="has-header has-tabs-top padding">
-                    <h3>No existen locales registrados para esta categoría</h3>
+                    <h3>No existen locales registrados para esta categor&iacute;a</h3>
                 </ion-content>
             </div>
+            <div class="content has-header"> 
+                <div class="row"  ng-repeat="shops in chunkedData">
+                    <div class="col-100" ng-repeat="shop in shops">
+                        <div class="card" >
+                            <div class="item item-text-wrap" >
 
-            <div class="row"  ng-repeat="shops in chunkedData">
-                <div class="col-100" ng-repeat="shop in shops">
-                    <div class="card" >
-                        <div class="item item-text-wrap" >
-
-                            
-                            <div class="item item-body">
-                                <h2>{{shop.razonSocialAct}}</h2>
-                                <a href="#/app/shop/{{shop.idAct}}">
-                                <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{shop.logoAct}}" >
-                                </a>
                                 
-                                <p>{{shop.sloganAct}}</p>
-                                <p>{{shop.servicioAct}}</p>
-                                
-                                <div class="social-buttons positive">
-                                        <button class="button button-light col col-20" ng-click="shareViaFb('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
-                                           <i class="icon ion-social-facebook"></i>
-                                        </button> 
-                                        <button class="button button-light col col-20" ng-click="shareViaTwitter('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
-                                           <i class="icon ion-social-twitter"></i>
-                                        </button> 
-                                        <button class="button button-light col col-20" ng-click="shareAnywhere('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com') ">
-                                           <i class="icon ion-forward"></i>
-                                        </button> 
-                                        
+                                <div class="item item-body">
+                                    <h2>{{shop.razonSocialAct}}</h2>
+                                    <a href="#/app/shop/{{shop.idAct}}">
+                                    <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{shop.logoAct}}" >
+                                    </a>
+                                    
+                                    <p>{{shop.sloganAct}}</p>
+                                    <p>{{shop.servicioAct}}</p>
+                                    
+                                    <div class="social-buttons positive">
+                                            <button class="button button-light col col-20" ng-click="shareViaFb('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                               <i class="icon ion-social-facebook"></i>
+                                            </button> 
+                                            <button class="button button-light col col-20" ng-click="shareViaTwitter('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
+                                               <i class="icon ion-social-twitter"></i>
+                                            </button> 
+                                            <button class="button button-light col col-20" ng-click="shareAnywhere('Mira este lugar que me gustó: {{shop.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com') ">
+                                               <i class="icon ion-forward"></i>
+                                            </button> 
+                                            
+                                    </div>
+                                    
+                                    <!-- <div class="tabs tabs-dark tabs-icon-top static">
+                                        <a class="tab-item"> 
+                                            <i class="icon ion-thumbsup"></i> Like </a>
+                                        <a class="tab-item"> <i class="icon ion-chatbox"></i> Comentarios</a>
+                                    </div> -->
+                                    
                                 </div>
-                                
-                                <!-- <div class="tabs tabs-dark tabs-icon-top static">
-                                    <a class="tab-item"> 
-                                        <i class="icon ion-thumbsup"></i> Like </a>
-                                    <a class="tab-item"> <i class="icon ion-chatbox"></i> Comentarios</a>
-                                </div> -->
-                                
-                            </div>
 
-                        </div>
+                            </div>
+                            
                         
-                    
+                        </div>
                     </div>
                 </div>
             </div>

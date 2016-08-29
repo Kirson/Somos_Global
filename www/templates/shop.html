@@ -6,23 +6,25 @@
                     <h3 class="padding">No existen productos registrados para este local</h3>
                 </ion-content>
             </div>
-            <div ng-show="{{hasProducts}}">
+            <div class="content has-header">
+                <div ng-show="{{hasProducts}}">
 
-                <div class="row" ng-repeat="imgs in references"> 
-                    <div class="column" >
-                        <div ng-if="imgs.idCg.idCg==82">
-                        <div class="card" >
-                            <div class="item item-text-wrap" >
-     
-                                <div class="item item-body">
-                                    
-                                        <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{imgs.val1Ar}}">
-                                    
+                    <div class="row" ng-repeat="imgs in references"> 
+                        <div class="column" >
+                            <div ng-if="imgs.idCg.idCg==82">
+                            <div class="card" >
+                                <div class="item item-text-wrap" >
+         
+                                    <div class="item item-body">
+                                        
+                                            <img class="full-image" src="http://186.5.121.17:9090/cashback/imagenes/{{imgs.val1Ar}}">
+                                        
+                                    </div>
+
                                 </div>
-
+                            
                             </div>
-                        
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>

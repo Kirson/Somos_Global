@@ -21,14 +21,23 @@ angular.module('starter.ActorReferenceServices', [])
       }
       return null;
     },
-     getReferences: function(shopId){
+    getReferences: function(shopId){
         return $http.get($rootScope.restUrl+"com.somosglobal.rest.actorreferencia/actor/"+shopId
               ).then(function(response){
                 //console.log(response.data);
                 references = response.data;
                 return references;
       });
+    },
+    getNearShops: function(longitude,latitude,distance){
+        return $http.get($rootScope.restUrl+"com.somosglobal.rest.actorreferencia/searchNearShop/"+longitude+"/"+latitude+"/"+distance
+              ).then(function(response){
+                //console.log(response.data);
+                references = response.data;
+                return references;
+      });
     }
+
   };
 
 });
