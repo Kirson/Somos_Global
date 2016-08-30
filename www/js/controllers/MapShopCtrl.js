@@ -11,12 +11,18 @@ angular.module('starter.MapShopCtrl', [])
     	$scope.$parent.setHeaderFab(false);
 
       var geoData = LocalAppStorage.getGeoPosition();
-      $scope.references = ActorReferences.getReferences($stateParams.shopId).then(function(data){
+      $scope.references = ActorReferences.getActorReferenceByActorIdAndCatalogo($stateParams.shopId).then(function(data){
+        console.log(" data: "+ data);
       	 return data;
        });
 
-      var lat;
-      var long;
+
+      console.log("lat");console.log($scope.references);
+      console.log("lat");console.log($scope.references.latitudAr);
+      console.log("long");console.log($scope.references.longitudAr);
+
+      var lat = $scope.references.latitudAr;
+      var long = $scope.references.longitudAr;
        /*
       console.log("$scope.references1");
       console.log($scope.references);
@@ -60,21 +66,36 @@ angular.module('starter.MapShopCtrl', [])
       	});
       });
 
-     lat=-78.493517;
-	long=-0.1181099999999998;
-
-      console.log("lat");console.log(lat);
-      console.log("long");console.log(long);
-
       var myLatlng = new google.maps.LatLng(geoData.lat,geoData.long);
       var pointLocal = new google.maps.LatLng(lat, long);
+
+      console.log("Device:");
+      console.log("lat");console.log(geoData.lat);
+      console.log("long");console.log(geoData.long);
+      console.log("Local:");
+      console.log("lat");console.log(lat);
+      console.log("long");console.log(long);
         
        var mapOptions = {
           center: myLatlng,
           zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-       };
-        var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+          mapTypeId: google.maps.MapTypeId.ROADMAP}        
+       ;
+      var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+      var marker =new google.maps.Marker({
+          position:myLatlng
+          // icon:'pinkball.png'
+      });
+
+        
+        var markerB = new google.maps.Marker({
+                position: pointLocal
+                // title: "Posicion del Local",
+                // label: "Local",
+                // map: map
+            });
+      marker.setMap(map);
+      markerB.setMap(map);
 
         var contentString = "<div><a ng-click='clickSaludo()'>Informaci&oacute;n !</a></div>";
         var compiled = $compile(contentString)($scope);
@@ -83,20 +104,15 @@ angular.module('starter.MapShopCtrl', [])
           content: compiled[0]
         });
 
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title: 'Posicion Actual',
-          label: "Origen"
-        });
-
         
-        var markerB = new google.maps.Marker({
-      					position: pointLocal,
-      					title: "Posicion del Local",
-      					label: "Local",
-      					map: map
-    				});
+
+
+        // var marker = new google.maps.Marker({
+        //   position: myLatlng,
+        //   // map: map,
+        //   title: 'Posicion Actual',
+        //   label: "Origen"
+        // });
 
       			
     	google.maps.event.addListener(marker, 'click', function() {
