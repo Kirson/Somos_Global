@@ -103,8 +103,12 @@ angular.module('starter.MapShopCtrl', [])
           infowindow.open(map,marker);
         });
 
+
+    	var contentString1 = "<div><a ng-click='clickSaludo()'>Destino !</a></div>";
+        var compiled1 = $compile(contentString)($scope);
+
         var infowindow1 = new google.maps.InfoWindow({
-          content: compiled[0]
+          content: compiled1[0]
         });
 
          google.maps.event.addListener(markerB, 'click', function() {
