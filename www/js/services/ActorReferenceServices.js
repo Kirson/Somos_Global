@@ -36,6 +36,14 @@ angular.module('starter.ActorReferenceServices', [])
                 references = response.data;
                 return references;
       });
+    },
+    getActorReferenceByActorIdAndCatalogo: function(actorId){
+        return $http.get($rootScope.restUrl+"com.somosglobal.rest.actorreferencia/actorIdAndCatalogo/"+actorId+"/68"
+              ).then(function(response){
+                //console.log(response.data);
+                references = response.data;
+                return references;
+      });
     }
 
   };
