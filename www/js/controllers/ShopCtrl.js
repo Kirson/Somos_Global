@@ -3,8 +3,8 @@ angular.module('starter.ShopCtrl', ['ngCordova'])
 
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
-    $scope.isExpanded = true;
-    $scope.$parent.setExpanded(true);
+    $scope.isExpanded = false;
+    $scope.$parent.setExpanded(false);
     $scope.$parent.setHeaderFab(false);
 	// $scope.chunkedData = null;
 	Shops.getLocales($stateParams.catId).then(function(shops){

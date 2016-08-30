@@ -5,6 +5,11 @@ angular.module('starter.MapCtrl', [])
 
      // google.maps.event.addDomListener(window, 'load', initialize);
 
+      $scope.$parent.showHeader();
+      $scope.$parent.clearFabs();
+      $scope.isExpanded = false;
+      $scope.$parent.setExpanded(false);
+      $scope.$parent.setHeaderFab(false);
      
       
       function initialize() {
@@ -12,8 +17,9 @@ angular.module('starter.MapCtrl', [])
         var geoData = LocalAppStorage.getGeoPosition();
 
         $scope.allNearShops = [];
-        $scope.nearShops = ActorReferences.getNearShops(geoData.long,geoData.lat,100000).then(function(nearShops){
+        $scope.nearShops = ActorReferences.getNearShops(geoData.long,geoData.lat,0.5).then(function(nearShops){
           $scope.nearShops1 =  nearShops;
+          return nearShops;
         });
 
         //console.log("dio click");
@@ -121,4 +127,24 @@ angular.module('starter.MapCtrl', [])
       };
 
       // $state.go($state.current, {}, {reload: true});
+
+      $scope.shareAnywhere = function(message, image, link) {
+        $cordovaSocialSharing.share(message, image, link);    
+      }
+ 
+      $scope.shareViaTwitter = function(message, image, link) {
+            $cordovaSocialSharing.shareViaTwitter(message, image, link).then(function(result) {
+
+        }, function(error) {
+            alert("Imposible compartir en Twitter");
+        });
+      }
+      
+      $scope.shareViaFb = function(message, image, link) {
+            $cordovaSocialSharing.shareViaFacebook(message, image, link).then(function(result) {
+
+        }, function(error) {
+            alert("Imposible compartir en Facebook");
+        });
+      }
 });

@@ -1,16 +1,5 @@
 <ion-view title="Locales cercanos">
     <ion-content id="map-and-location">
-        <!--
-        <div class="content has-header padding" ng-controller="MapCtrl">
-            <button class="button button-positive col col-20" ng-click="initialize();">
-                <i class="icon ion-search"></i>
-            </button> 
-        </div>
-        -->
-        <!--
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyByXigf_FxYyqNv3LZLCiUyBKYWOGZiRgw"></script>
-        <div id="map" class="padding" data-tap-disabled="true"></div>
-        -->
         <div class="content has-header" >
             <div class="row"  ng-repeat="shop in nearShops1">
                 <div class="card" >
@@ -22,6 +11,9 @@
                             </a>
                             <p>{{shop.idAct.sloganAct}}</p>
                             <p>{{shop.idAct.servicioAct}}</p>
+                            <p><a href="#/app/mapshop/{{shop.idAct.idAct}}">
+                               Geolocalizaci&oacute;n
+                            </a></p>
                             <div class="social-buttons positive">
                                 <button class="button button-light col col-20" ng-click="shareViaFb('Mira este lugar que me gustó: {{shop.idAct.razonSocialAct}}', null, 'https://www.thepolyglotdeveloper.com')">
                                     <i class="icon ion-social-facebook"></i>

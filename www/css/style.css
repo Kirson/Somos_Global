@@ -113,3 +113,9 @@ Map
 .scroll {
     height: 100%;
   }
+
+.font-white {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}

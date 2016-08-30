@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
                             'starter.UserServices','UserControllers','SocialServices',
-                            'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl',
+                            'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl','starter.MapShopCtrl',
                             'starter.CategoryServices','starter.ProductServices','starter.ActorServices',
                             'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
                             'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
@@ -69,6 +69,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/map.html',
                 controller: 'MapCtrl'
+            },
+            'fabContent': {
+                template: ''
+                
+            }
+        }
+    })
+
+    .state('app.mapshop', {
+        url: '/mapshop/:shopId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/mapShop.html',
+                controller: 'MapShopCtrl'
             },
             'fabContent': {
                 template: ''

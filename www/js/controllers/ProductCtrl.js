@@ -2,6 +2,12 @@ angular.module('starter.ProductCtrl',[])
 .controller('ProductCtrl', function($scope, $stateParams, $timeout,  Products, Shops,
 									ActorReferences, ionicMaterialInk, ionicMaterialMotion) {
 
+    $scope.$parent.showHeader();
+    $scope.$parent.clearFabs();
+    $scope.isExpanded = false;
+    $scope.$parent.setExpanded(false);
+    $scope.$parent.setHeaderFab(false);
+
   var imageReferences = [];
 	var references = [];
    
