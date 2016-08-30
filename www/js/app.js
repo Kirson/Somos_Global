@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
-                            'starter.UserServices','UserControllers','SocialServices',
+                            'starter.UserServices','UserControllers','SocialServices','JSONServices',
                             'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl','starter.MapShopCtrl',
                             'starter.CategoryServices','starter.ProductServices','starter.ActorServices',
                             'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
@@ -159,12 +159,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                 controller: 'ProfileCtrl'
             },
             'fabContent': {
-                template: '<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-plus"></i></button>',
-                controller: function ($timeout) {
-                    /*$timeout(function () {
-                        document.getElementById('fab-profile').classList.toggle('on');
-                    }, 800);*/
-                }
+                template: ''
             }
         }
     })
@@ -175,6 +170,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/register.html',
                 controller: 'LoginCtrl'
+            },
+            'fabContent': {
+                template: ''
             }
             
 
@@ -187,6 +185,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/register-confirm.html',
                 controller: 'LoginCtrl'
+            },
+            'fabContent': {
+                template: ''
             }
         }
     })
@@ -197,6 +198,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/register-terms.html',
                 controller: 'LoginCtrl'
+            },'fabContent': {
+                template: ''
             }
         }
     })
@@ -207,6 +210,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/category.html',
                 controller: 'CategoryCtrl'
+            },'fabContent': {
+                template: ''
             }
 
         }
@@ -218,6 +223,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/category.html',
                 controller: 'CategoryCtrl'
+            },'fabContent': {
+                template: ''
             }
 
         }
@@ -229,6 +236,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/categoryDetail.html',
                 controller: 'ShopCtrl'
+            },'fabContent': {
+                template: ''
             }
         }
     })
@@ -239,6 +248,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/shop.html',
                 controller: 'ProductCtrl'
+            },'fabContent': {
+                template: ''
             }
         }
     })
@@ -249,6 +260,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/shop.html',
                 controller: 'ProductCtrl'
+            },'fabContent': {
+                template: ''
             }
         }
     })

@@ -1,6 +1,6 @@
 angular.module('starter.MapShopCtrl', [])
 
-    .controller('MapShopCtrl', function($scope, $ionicLoading, $compile,LocalAppStorage,
+    .controller('MapShopCtrl', function($scope, $ionicLoading, $compile,LocalAppStorage,$q,
                                         ActorReferences,$ionicPopup,Actor,$state,$timeout,$stateParams) {
 
 
@@ -11,27 +11,67 @@ angular.module('starter.MapShopCtrl', [])
     	$scope.$parent.setHeaderFab(false);
 
       var geoData = LocalAppStorage.getGeoPosition();
-
       $scope.references = ActorReferences.getReferences($stateParams.shopId).then(function(data){
-         return data;
+      	 return data;
        });
 
       var lat;
       var long;
+       /*
+      console.log("$scope.references1");
+      console.log($scope.references);
+      var value0 = $scope.references.$$state;
+      	console.log("value0");
+      	console.log(value0);
+      	console.log(value0.status);
+      	var va1 = value.then(function(status,value){return value});
 
-      angular.forEach($scope.references,function(value, index){
-      		if(value.idCg.idCg==68){
-      			lat=value.latitudAr;
-      			long=value.longitudAr;
-      		}
+      $scope.references = $scope.references.then(function(state,value){return value});
+      //$scope.references = $scope.references.then(function (data){return data});
+      //$scope.references = JSON.parse($scope.references);
+
+       console.log("$scope.references2");
+      console.log($scope.references);
+
+      console.log("$scope.references3");
+      $scope.references = $scope.references.$$state;
+      console.log($scope.references);
+      console.log("$scope.references.value");
+      console.log($scope.references.value);
+	*/
+
+      angular.forEach($scope.references,function(actorReferencia){
+      	/*
+      	console.log("actorReferencia");
+      	console.log(actorReferencia);
+      	var value1 = actorReferencia;
+      	console.log("value1");
+      	console.log(value1);
+      	var value2 = actorReferencia.$$state.value;
+      	console.log("value2");
+      	console.log(value2);
+		*/
+      	   angular.forEach(actorReferencia.data,function(val){
+      	   	 console.log("val"); console.log(val);
+      		/*if(val.idCg.idCg==68){
+      			lat=val.latitudAr;
+      			long=val.longitudAr;
+      		}*/
+      	});
       });
+
+     lat=-78.493517;
+	long=-0.1181099999999998;
+
+      console.log("lat");console.log(lat);
+      console.log("long");console.log(long);
 
       var myLatlng = new google.maps.LatLng(geoData.lat,geoData.long);
       var pointLocal = new google.maps.LatLng(lat, long);
         
        var mapOptions = {
           center: myLatlng,
-          zoom: 12,
+          zoom: 14,
           mapTypeId: google.maps.MapTypeId.ROADMAP
        };
         var map = new google.maps.Map(document.getElementById("map"),mapOptions);
@@ -46,44 +86,100 @@ angular.module('starter.MapShopCtrl', [])
         var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          title: 'Posicion Actual'
+          title: 'Posicion Actual',
+          label: "Origen"
         });
 
-        directionsService = new google.maps.DirectionsService();
-    	directionsDisplay = new google.maps.DirectionsRenderer({map: map});
-    				
-    	var marker = new google.maps.Marker({position: myLatlng,
-      						title: "Posicion actual",
-      						label: "Origen",
-      						map: map
-    					});
-         var markerB = new google.maps.Marker({
+        
+        var markerB = new google.maps.Marker({
       					position: pointLocal,
       					title: "Posicion del Local",
       					label: "Local",
       					map: map
     				});
 
-         calculateAndDisplayRoute(directionsService, directionsDisplay, myLatlng, pointLocal);
-
-
-        google.maps.event.addListener(marker, 'click', function() {
+      			
+    	google.maps.event.addListener(marker, 'click', function() {
           infowindow.open(map,marker);
         });
 
-        function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
-  				directionsService.route({
-    				origin: pointA,
-    				destination: pointB,
-    				travelMode: google.maps.TravelMode.DRIVING
-  				}, function(response, status) {
-    				if (status == google.maps.DirectionsStatus.OK) {
-      						directionsDisplay.setDirections(response);
-    				} else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
+        var infowindow1 = new google.maps.InfoWindow({
+          content: compiled[0]
+        });
 
+         google.maps.event.addListener(markerB, 'click', function() {
+          infowindow1.open(map,markerB);
+        });	
+
+        var directionsService = new google.maps.DirectionsService();
+    	var directionsDisplay = new google.maps.DirectionsRenderer();
+    
+
+         //calculateAndDisplayRoute(directionsService, directionsDisplay, myLatlng, pointLocal,map);
+
+         directionsService.route({
+    			origin: myLatlng,
+    			destination: pointLocal,
+    			travelMode: google.maps.TravelMode.DRIVING
+  			}, function(response, status) {
+    			if (status == google.maps.DirectionsStatus.OK) {
+      						directionsDisplay.setDirections(response);
+      						directionsDisplay.setMap(map);
+      					
+      						console.log("1111");
+    			}else{
+      				
+      				console.log("2222 " + status);
+    			}
+  			});
+
+         google.maps.event.addListenerOnce(directionsDisplay, 'directions_changed', 
+   			function(){
+   				var waypoints=directionsDisplay.getDirections().routes[0]
+                    .legs[0].via_waypoints||[];
+    			for(var i=0;i<waypoints.length;++i){
+       				waypoints[i]={stopover:true,location: waypoints[i]}
+    			}
+    			route(waypoints);
+		});
+
+         $scope.map=map;
+
+        
+
+        $scope.clickSaludo = function() {
+        $ionicPopup.alert({
+           title: 'Info',
+           template: 'Esta es su ubicaci&oacute;n actual '
+         });
+      };
+
+      $scope.clickLocal = function(vId) {
+        var vactor = "";
+        $scope.actor = Actor.getActorById(vId).then(function(actor){
+          console.log(actor);
+          $scope.actor =  actor;
+        });
+       console.log($scope.actor);
+       var vTemplate = 'Local cercano ' + $scope.actor.idAct;
+       console.log(vTemplate);
+      };
+
+
+       function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, map) {
+  			directionsService.route({
+    			origin: pointA,
+    			destination: pointB,
+    			travelMode: google.maps.TravelMode.DRIVING
+  			}, function(response, status) {
+    			if (status == google.maps.DirectionsStatus.OK) {
+      						directionsDisplay.setDirections(response);
+      						directionsDisplay.setMap(map);
+      						window.alert('Ingresa ??');
+    			}else{
+      				window.alert('Directions request failed due to ' + status);
+    			}
+  			});
+		};
 
 });

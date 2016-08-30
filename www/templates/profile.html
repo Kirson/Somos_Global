@@ -1,20 +1,11 @@
 <ion-view view-title="Perfil">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-<!--         <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyByXigf_FxYyqNv3LZLCiUyBKYWOGZiRgw"></script> -->
-        <!-- <div class="content has-header" ng-controler="ProfileCtrl"> -->
         <div class="content" >
             <ion-list>
                     <div class="item item-avatar">
                         
                         <img src="{{user.picture}}"/>
                         <h2 class="padding">{{user.name}}</h2>
-                        <!--
-                        <h3 class="padding">{{user.userID}}</h3>
-                        <h3 class="padding">{{user.authResponse}}</h3>
-                        <h3 class="padding">{{user.authResponse.userID}}</h3>
-                        -->
-                        <!--<p class="padding">Usted no posee puntos</p>-->
-                        
                         <p>Se encuentra en:</p>
                         <p>Latitud {{lat}}</p>
                         <p>Longitud {{long}}</p>
@@ -30,9 +21,6 @@
                 </a>
             </div>
         </div>
-<!--         <div class="content" ng-controler="ProfileCtrl">
-            <div id="map" data-tap-disabled="true"></div>
-        </div> -->
         <div id="map" data-tap-disabled="true"></div>
     </ion-content>
 </ion-view>
