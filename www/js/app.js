@@ -12,8 +12,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                             'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
 
 .run(function($ionicPlatform, $rootScope) {
-    // $rootScope.restUrl = "http://186.5.121.17:9090/SomosGlobal/webresources/";
-    $rootScope.restUrl = "http://localhost:8080/SomosGlobal/webresources/";
+    $rootScope.restUrl = "http://186.5.121.17:9090/SomosGlobal/webresources/";
+    // $rootScope.restUrl = "http://localhost:8080/SomosGlobal/webresources/";
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

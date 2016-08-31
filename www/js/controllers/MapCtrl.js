@@ -21,7 +21,7 @@ angular.module('starter.MapCtrl', [])
           $scope.nearShops1 =  nearShops;
           return nearShops;
         });
-
+/*
         //console.log("dio click");
 
         var myLatlng = new google.maps.LatLng(geoData.lat,geoData.long);
@@ -81,6 +81,8 @@ angular.module('starter.MapCtrl', [])
         $timeout(function () {
           $scope.maps = map;
         }, 300);
+
+        */
       }// end initialize
 
 
