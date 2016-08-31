@@ -45,7 +45,9 @@ angular.module('starter.MapShopCtrl', [])
       var infowindow = new google.maps.InfoWindow({
         content: "Mi ubicaci&oacute;n",
       });
+      console.log("data");console.log(data);
       var infowindowLocal = new google.maps.InfoWindow({
+
         content:data.idAct.razonSocialAct+": "+ data.val2Ar+" "+ data.val3Ar+" "+ data.val4Ar
       });
       
@@ -59,16 +61,15 @@ angular.module('starter.MapShopCtrl', [])
       // marker.setMap(map);
       // markerB.setMap(map);
 
-<<<<<<< HEAD
+
 
     	var contentString1 = "<div><a ng-click='clickSaludo()'>Destino !</a></div>";
-        var compiled1 = $compile(contentString)($scope);
+        var compiled1 = $compile(contentString1)($scope);
 
         var infowindow1 = new google.maps.InfoWindow({
           content: compiled1[0]
         });
-=======
->>>>>>> 7c1bc32d4c6123efdc8750d38e040d4cb708263b
+
 
 
 ///////****************CALCULO DE DIRECCIONES ***************/////
