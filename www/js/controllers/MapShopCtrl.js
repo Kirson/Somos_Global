@@ -46,7 +46,7 @@ angular.module('starter.MapShopCtrl', [])
         content: "Mi ubicaci&oacute;n",
       });
       var infowindowLocal = new google.maps.InfoWindow({
-        content:data.idAct.razonSocialAct
+        content:data.idAct.razonSocialAct+": "+ data.val2Ar+" "+ data.val3Ar+" "+ data.val4Ar
       });
       
 

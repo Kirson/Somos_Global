@@ -1,7 +1,7 @@
 angular.module('starter.MapCtrl', [])
 
     .controller('MapCtrl', function($scope, $ionicLoading, $compile,LocalAppStorage,
-                                    ActorReferences,$ionicPopup,Actor,$state,$timeout) {
+                                    ActorReferences,$ionicPopup,Actor,$state,$timeout, $cordovaGeolocation,LocalAppStorage) {
 
      // google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -10,7 +10,6 @@ angular.module('starter.MapCtrl', [])
       $scope.isExpanded = false;
       $scope.$parent.setExpanded(false);
       $scope.$parent.setHeaderFab(false);
-     
       
       function initialize() {
 
@@ -88,7 +87,7 @@ angular.module('starter.MapCtrl', [])
 
       ionic.Platform.ready(function(){
         console.log("ready");
-        initialize();
+        
        
         // google.maps.event.addDomListener(window, 'load', initialize);
       });
@@ -149,4 +148,39 @@ angular.module('starter.MapCtrl', [])
             alert("Imposible compartir en Facebook");
         });
       }
+
+
+//***************OBTENGO POSICION********************************////
+
+
+    // var lat;
+    // var long;
+
+    // google.maps.event.addDomListener(window, 'load', initialize);
+
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $cordovaGeolocation
+      .getCurrentPosition(posOptions)
+      .then(function (position) {
+          lat  = position.coords.latitude;
+          long = position.coords.longitude;
+          $scope.lat = lat;
+          $scope.long = long;
+          //alert(lat + " --- " + long);
+          
+          var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+          LocalAppStorage.setGeoPosition({
+            lat: position.coords.latitude,
+            long: position.coords.longitude,
+            latLng: latLng
+          });
+ 
+         initialize();
+         
+      }, function(err) {
+        // error
+        console.log("Could not get location");
+    });
+
 });
