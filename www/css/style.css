@@ -119,3 +119,9 @@ Map
     font-weight: bold;
     font-size: 16px;
 }
+.background-white{
+    background-color: white !important;
+}
+.bar-positive, .bar-positive-900, .positive-bg{
+    background-color: #3f8dbf !important;
+}
