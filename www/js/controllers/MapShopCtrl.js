@@ -25,6 +25,9 @@ angular.module('starter.MapShopCtrl', [])
           mapTypeId: google.maps.MapTypeId.ROADMAP}        
        ;
       var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+
+///////****************PUNTOS EN EL MAPA ***************/////
+
       var marker =new google.maps.Marker({
           position:myLatlng,
           title: "Mi Posici&oacute;n",
@@ -56,7 +59,57 @@ angular.module('starter.MapShopCtrl', [])
       // marker.setMap(map);
       // markerB.setMap(map);
 
-        
+
+
+///////****************CALCULO DE DIRECCIONES ***************/////
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+    
+
+         calculateAndDisplayRoute(directionsService, directionsDisplay, myLatlng, pointLocal,map);
+
+         directionsService.route({
+          origin: myLatlng,
+          destination: pointLocal,
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+                  directionsDisplay.setDirections(response);
+                  directionsDisplay.setMap(map);
+          }else{
+              
+              console.log("info " + status);
+          }
+        });
+
+        google.maps.event.addListenerOnce(directionsDisplay, 'directions_changed', 
+        function(){
+          var waypoints=directionsDisplay.getDirections().routes[0]
+                    .legs[0].via_waypoints||[];
+          for(var i=0;i<waypoints.length;++i){
+              waypoints[i]={stopover:true,location: waypoints[i]}
+          }
+          route(waypoints);
+    });
+
+       function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB, map) {
+        directionsService.route({
+          origin: pointA,
+          destination: pointB,
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+                  directionsDisplay.setDirections(response);
+                  directionsDisplay.setMap(map);
+                  window.alert('Ingresa ??');
+          }else{
+              window.alert('Directions request failed due to ' + status);
+          }
+        });
+    };
+
+
+
 
        });
 
