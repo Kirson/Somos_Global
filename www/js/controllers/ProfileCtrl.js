@@ -43,9 +43,7 @@ angular.module('starter.ProfileCtrl',[])
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
  
-          console.log("Antes de map");
-          var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-          console.log("Luego de map");
+          var map = new google.maps.Map(document.getElementById("profile-map"), mapOptions);
           
           navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));

@@ -103,8 +103,13 @@ Slider
 /**
 Map
 **/
-#map {
+#profile-map {
     height: 50%;
+    width: 90%;
+    margin: 5%;
+}
+#map {
+    height: 90%;
     width: 90%;
     margin: 5%;
 }
