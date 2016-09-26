@@ -1,0 +1,35 @@
+<ion-view view-title="Puntos">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-header"> 
+            <ion-list>
+                <!-- <ion-item ng-repeat="category in categories" 
+                            class="item-icon-left" href="#/app/{{url}}/{{category.catId}}">
+                        <i class = "{{category.catAppImagen}}"></i>
+                        <h2>{{category.catNombre}}</h2>
+                        <p> {{category.catNombre}}</p>
+                        
+                </ion-item> -->
+                <ion-item>
+                    <div class="list">
+                        <ion-label>Puntos: </ion-label>
+                        <ion-md-input class="input" placeholder="Puntos" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.numberOfPoints"></ion-md-input>
+                    </div>
+                </ion-item>
+                <ion-item >
+                    <ion-label>Transferencia de Puntos</ion-label>
+                    <div class="list">
+                        <ion-md-input class="input" placeholder="Usuario/email" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.user"></ion-md-input>
+                        <ion-md-input class="input" placeholder="Puntos a transferir" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.trasnferPoints"></ion-md-input>
+                    </div>
+                    <div class="padding">
+                        <button ng-click="transfer()" class="button button-full button-positive ink">Trasnferir Puntos</button>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-positive">
+        <!--<h3 class="title">Somos Global</h3>-->
+    </ion-footer-bar>
+
+</ion-view>

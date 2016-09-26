@@ -7,6 +7,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
                             'starter.UserServices','UserControllers','SocialServices','JSONServices',
                             'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl','starter.MapShopCtrl',
+                            'starter.PointsCtrl',
                             'starter.CategoryServices','starter.ProductServices','starter.ActorServices',
                             'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
                             'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
@@ -262,6 +263,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             'menuContent': {
                 templateUrl: 'templates/shop.html',
                 controller: 'ProductCtrl'
+            },'fabContent': {
+                template: ''
+            }
+        }
+    })
+
+    .state('app.points', {
+        url: '/points',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/points.html',
+                controller: 'PointsCtrl'
             },'fabContent': {
                 template: ''
             }
