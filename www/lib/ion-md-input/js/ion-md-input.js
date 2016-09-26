@@ -40,6 +40,8 @@ angular.module('ionMdInput', [])
         'ng-trim': attr.trim,
         'ng-blur': attr.ngBlur,
         'ng-focus': attr.ngFocus,
+        'readonly':attr.readOnly,
+        'ng-disabled':attr.ngDisabled
       }, function(value, name) {
         if (angular.isDefined(value)) {
           input.attr(name, value);
