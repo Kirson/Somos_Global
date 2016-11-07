@@ -8,7 +8,10 @@ angular.module('starter.ActorServices', [])
   return {
 
     all: function() {
-      return actors;
+      return $http.get($rootScope.restUrl+"com.somosglobal.rest.actor/").success(function(response){
+              // console.log(response);
+              return response;
+      });
     },
     remove: function(id) {
       actors.splice(actors.indexOf(id), 1);
