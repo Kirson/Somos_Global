@@ -7,15 +7,15 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput','ngCordova',
                             'starter.UserServices','UserControllers','SocialServices','JSONServices',
                             'starter.MenuCtrl','LocalStorageServices','starter.MapCtrl','starter.MapShopCtrl',
-                            'starter.PointsCtrl',
+                            'starter.PointsCtrl','starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl',
                             'starter.CategoryServices','starter.ProductServices','starter.ActorServices',
-                            'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices',
-                            'starter.ShopCtrl', 'starter.ProductCtrl','starter.ProfileCtrl'])
+                            'starter.ShopServices', 'starter.CategoryCtrl', 'starter.ActorReferenceServices', 'starter.PointsServices'
+                            ])
 
 .run(function($ionicPlatform, $rootScope) {
 
-     $rootScope.restUrl = "http://186.5.121.17:9090/SomosGlobal/webresources/";
-    //$rootScope.restUrl = "http://localhost:8080/SomosGlobal/webresources/";
+     // $rootScope.restUrl = "http://186.5.121.17:9090/SomosGlobal/webresources/";
+    $rootScope.restUrl = "http://localhost:8080/SomosGlobal/webresources/";
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

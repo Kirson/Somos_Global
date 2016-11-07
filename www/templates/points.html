@@ -18,14 +18,21 @@
                 <ion-item >
                     <ion-label>Transferencia de Puntos</ion-label>
                     <div class="list">
-                        <ion-md-input class="input" placeholder="Usuario/email" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.user"></ion-md-input>
+
+                        <!-- <p> {{selectedItem}}</p> -->
+                        <select ng-model="selectedItem">
+                            <option class="input" ng-repeat="actor in actors" value="{{actor.cedrucpasAct}}">{{actor.razonSocialAct}} - {{actor.cedrucpasAct}}</option>
+                        </select>
+                        <!-- <ion-md-input class="input" placeholder="Cedula desde" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.numDocumentoActor"></ion-md-input> -->
+                        <ion-md-input class="input" placeholder="Cedula hacia" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.numDocumentoActor2"></ion-md-input>
                         <ion-md-input class="input" placeholder="Puntos a transferir" highlight-color="balanced" type="text" ng-maxlength='13' ng-model="points.trasnferPoints"></ion-md-input>
                     </div>
                     <div class="padding">
-                        <button ng-click="transfer()" class="button button-full button-positive ink">Trasnferir Puntos</button>
+                        <button ng-click="transfer(selectedItem)" class="button button-full button-positive ink">Trasnferir Puntos</button>
                     </div>
                 </ion-item>
             </ion-list>
+            
         </div>
     </ion-content>
     <ion-footer-bar align-title="left" class="bar-positive">
